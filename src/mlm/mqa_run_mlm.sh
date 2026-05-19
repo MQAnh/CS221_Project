@@ -3,11 +3,11 @@
 uv add adapters evaluate
 uv add accelerate -U
 
-languages=('tha-Thai')
+# languages=('amh-Ethi' 'uzn-Latn' 'sun-Latn' 'cym-Latn' 'mar-Deva' 'ckb-Arab')
+languages=('amh-Ethi')
 adapter_sources=("glot")
 
 export NCCL_DEBUG=WARN
-export CUDA_VISIBLE_DEVICES=""
 
 BASE_DIR=~/hihi/CS221/Knowledge-Driven-Adaptation-LLMs
 
@@ -32,7 +32,7 @@ for source in "${adapter_sources[@]}"; do
             --adapter_config seq_bn_inv \
             --overwrite_output_dir \
             --save_total_limit=1 \
-            --evaluation_strategy steps \
+            --eval_strategy steps \
             --save_strategy steps \
             --max_steps 1000 \
             --line_by_line
